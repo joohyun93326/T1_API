@@ -5,17 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Geolocation - Team1</title>
+  <title>Drag & Drop - Team1</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  
-  <!-- javascript -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78fd9767d0455a9edc0369d1b0e93d8e"></script>
-  <script type="text/javascript" src="assets/js/Geolocation.js"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -30,8 +26,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/Geolocation.css">
-
+  <link href="assets/css/dragdrop_css.css" rel="stylesheet">
+  
   <!-- =======================================================
   * Template Name: Kelly - v2.1.1
   * Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
@@ -51,8 +47,8 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="geolocation.html">Geolocation</a></li>
-          <li><a href="dragdrop.html">Drag & Drop</a></li>
+          <li><a href="geolocation.html">Geolocation</a></li>
+          <li class="active"><a href="dragdrop.html">Drag & Drop</a></li>
           <li><a href="localstorage.html">Local Storage</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -66,28 +62,31 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Geolocation</h2>
-          <p>geolocation API는 사용자의 현재 위치 정보를 가져올 때 사용하는 자바스크립트 API입니다.<br>사용자의 위도 및 경도에 관한 정보는 자바스크립트를 이용해 웹 서버로 전송됩니다.</p>
+          <h2>Drag & Drop</h2>
+          <p>드래그 앤 드롭 API는 웹 페이지 내의 요소를 사용자가 자유롭게 드래그할 수 있도록 설정해줍니다.<br>현재 주요 웹 브라우저들은 모두 이 기능을 지원하며, 따라서 웹 페이지 내의 모든 요소는 드래그될 수 있습니다.</p>
         </div>
 		<hr>
 		
         <div class="board">
-          <div id="mapwrap">
-            <div id="map" style="width: 100%; height: 400px;"></div>
-          </div>
-          <div class="categorywrap">
-            <div class="category" id="category">
-     	    <ul>
-              <li id="centerMenu" onclick="changeMarker('center')"><span
-                 class="ico_comm ico_center"></span> 접종센터</li>
-            </ul>
-          </div>
+        <article></article>
+          <article class="draggable-elements">  
+            <div class="color-red draggable" draggable="true" style="background-color: #ff6384;" id="red"></div>
+            <div class="color-blue draggable" draggable="true" style="background-color: #36a2eb;" id="blue"></div>
+            <div class="color-yellow draggable" draggable="true" style="background-color: #ffce56;" id="yellow"></div>
+            <div class="color-violet draggable" draggable="true" style="background-color: #9966ff;" id="violet"></div>
+            <div class="color-green draggable" draggable="true" style="background-color: #4bc0c0;" id="green"></div>
+          </article>
+          <article class="droppable-elements">
+            <div class="droppable" data-draggable-id="green"><span>Green</span></div>
+            <div class="droppable" data-draggable-id="yellow"><span>Yellow</span></div>
+            <div class="droppable" data-draggable-id="red"><span>Red</span></div>
+            <div class="droppable" data-draggable-id="violet"><span>Violet</span></div>
+            <div class="droppable" data-draggable-id="blue"><span>Blue</span></div>
+          </article>
           
-          
-          </div>
         </div> <!-- board -->
 
-      </div> <!-- container -->
+      </div>
     </section><!-- End Resume Section -->
 
   </main><!-- End #main -->
@@ -125,6 +124,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/DragDrop.js"></script>
 
 </body>
 

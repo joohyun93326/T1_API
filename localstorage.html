@@ -5,20 +5,29 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Geolocation - Team1</title>
+  <title>Local Storage - Team1</title>
   <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="" name="keywords">\
+
+  <!-- 부트스트랩 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  
+
   <!-- javascript -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78fd9767d0455a9edc0369d1b0e93d8e"></script>
-  <script type="text/javascript" src="assets/js/Geolocation.js"></script>
+  <script type="text/javascript" src="assets/js/LocalStorage.js"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +39,9 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/Geolocation.css">
+  <link rel="stylesheet" href="assets/css/LocalStorage.css">
+
+
 
   <!-- =======================================================
   * Template Name: Kelly - v2.1.1
@@ -51,9 +62,9 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li class="active"><a href="geolocation.html">Geolocation</a></li>
+          <li><a href="geolocation.html">Geolocation</a></li>
           <li><a href="dragdrop.html">Drag & Drop</a></li>
-          <li><a href="localstorage.html">Local Storage</a></li>
+          <li class="active"><a href="localstorage.html">Local Storage</a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -66,28 +77,41 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Geolocation</h2>
-          <p>geolocation API는 사용자의 현재 위치 정보를 가져올 때 사용하는 자바스크립트 API입니다.<br>사용자의 위도 및 경도에 관한 정보는 자바스크립트를 이용해 웹 서버로 전송됩니다.</p>
+          <h2>Local Storage</h2>
+          <p>Web Storage API의 두 가지 방식 중 하나인 localStorage 입니다.<br>localStorage는 유효기간 없이 데이터를 저장하여 브라우저를 닫았다 열어도 데이터가 남아있으며, 다른 방식보다 저장 공간이 제일 큰 것이 특징입니다. (5MB)</p>
         </div>
-		<hr>
-		
-        <div class="board">
-          <div id="mapwrap">
-            <div id="map" style="width: 100%; height: 400px;"></div>
-          </div>
-          <div class="categorywrap">
-            <div class="category" id="category">
-     	    <ul>
-              <li id="centerMenu" onclick="changeMarker('center')"><span
-                 class="ico_comm ico_center"></span> 접종센터</li>
-            </ul>
-          </div>
-          
-          
-          </div>
-        </div> <!-- board -->
+        <hr>
 
-      </div> <!-- container -->
+        <div class="board" style="height : 100%;">
+          <div id="exHeader">
+            <p id = "totalVisit">이 사이트 총 방문 횟수 : </p>
+            <h1>일별 박스오피스 순위 확인</h1><br>
+            <form action="#">
+              <label for="selectDate">날짜를 선택하세요 : </label>
+              <input type="date" id="selectDate" name="selectDate">
+              <input type="button" onclick="btnClick()" id="btn" value="확인하기" class="btn btn-primary btn-sm">
+              <input type="button" onclick="window.open('log.html','zip','width=500,height=500')" id="chk" value="검색 기록 확인"  class="btn btn-primary btn-sm">
+            </form>
+            <br><hr><br>
+          </div>
+          <section id="section">
+            <table class="table table-hover">
+              <thead id="thead">
+              <th>랭킹</th>
+              <th>영화제목</th>
+              <th>당일 관객 수</th>
+              <th>누적 관객 수</th>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+          </section>
+          <div id = "clearDiv">
+          <input type="button" id="clear" onclick="clearLocalStorage()" value="사이트 기록 초기화" class="btn btn-primary btn-sm">
+          </div>
+        </div>
+
+      </div>
     </section><!-- End Resume Section -->
 
   </main><!-- End #main -->
